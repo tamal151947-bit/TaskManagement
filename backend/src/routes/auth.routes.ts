@@ -19,20 +19,22 @@ const loginSchema = z.object({
   password: z.string().min(1),
 });
 
+const cookieOptions = {
+  httpOnly: true,
+  sameSite: (env.NODE_ENV === "production" ? "none" : "lax") as "none" | "lax",
+  secure: env.NODE_ENV === "production",
+};
+
 const setRefreshCookie = (res: any, token: string) => {
   res.cookie("refreshToken", token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: env.NODE_ENV === "production",
+    ...cookieOptions,
     maxAge: env.REFRESH_TOKEN_TTL_DAYS * 24 * 60 * 60 * 1000,
   });
 };
 
 const clearRefreshCookie = (res: any) => {
   res.clearCookie("refreshToken", {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: env.NODE_ENV === "production",
+    ...cookieOptions,
   });
 };
 
