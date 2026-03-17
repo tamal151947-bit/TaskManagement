@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff7ec;
+  --foreground: #1f1b16;
+  --card: #fffcf6;
+  --muted: #786b5c;
+  --accent: #e85d04;
+  --accent-2: #f48c06;
+  --danger: #b00020;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+}
+
+body {
+  background:
+    radial-gradient(circle at top right, #ffd8a8 0%, transparent 45%),
+    radial-gradient(circle at left 20%, #ffe8cc 0%, transparent 30%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.auth-screen,
+.dashboard-screen {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card,
+.dashboard-shell,
+.task-form-card,
+.task-list-card {
+  background: var(--card);
+  border: 1px solid #f4d9b6;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(157, 88, 20, 0.12);
+}
+
+.auth-card {
+  width: min(460px, 100%);
+  padding: 28px;
+}
+
+.auth-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auth-card p {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.switch-link {
+  margin-top: 18px;
+}
+
+.switch-link a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.form-stack {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.form-stack label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #e7c7a0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+button.ghost {
+  background: #fff1df;
+  color: #8c4a12;
+}
+
+button.active {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+button.danger {
+  background: #fde7ea;
+  color: var(--danger);
+}
+
+.dashboard-shell {
+  width: min(980px, 100%);
+  padding: 22px;
+  display: grid;
+  gap: 16px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+}
+
+.dashboard-header p {
+  color: var(--muted);
+}
+
+.task-form-card,
+.task-list-card {
+  padding: 16px;
+}
+
+.row-buttons,
+.task-controls,
+.filter-row,
+.task-actions,
+.pager {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.task-list {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #f0d8bb;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fffdfa;
+}
+
+.task-list li.done h3 {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-list h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.task-list p,
+.task-list small {
+  color: var(--muted);
+}
+
+.pager {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-shell {
+    padding: 14px;
+  }
+
+  .dashboard-header,
+  .task-list li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+}
